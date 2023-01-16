@@ -23,12 +23,19 @@ class BeersTableSeeder extends Seeder
         foreach ($array_beers as $beer) {
             $new_beer = new Beer();
             $new_beer->name = $beer->name;
-            $new_beer->price = $beer->price;
-            $new_beer->rating = $beer->rating;
+            $new_beer->price = $this->priceConvert($beer->price);
+            $new_beer->rating = $beer->rating->average;
             $new_beer->image = $beer->image;
             $new_beer->slug = Beer::generateSlug($new_beer->name);
             // dd($new_beer);
             $new_beer->save();
         }
+    }
+
+    private function priceConvert($stringPrice){
+
+        $price = str_replace('$','',$stringPrice);
+        $price = (float) $price;
+        return $price;
     }
 }
