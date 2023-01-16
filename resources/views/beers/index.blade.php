@@ -15,6 +15,7 @@
                 <th scope="col">Price</th>
                 <th scope="col">Rating</th>
                 <th scope="col">Image</th>
+                <th scope="col">azioni</th>
               </tr>
             </thead>
             <tbody>
@@ -25,6 +26,7 @@
                     <td>{{$beer->price}}</td>
                     <td>{{$beer->rating}}</td>
                     <td><img class="img-thumbnail" src="{{$beer->image}}" alt="{{$beer->name}}"></td>
+                    <td><a class="btn btn-info" href="{{route('beers.show', $beer)}}">Show</a></td>
                 </tr>
                 @endforeach
 
