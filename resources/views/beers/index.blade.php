@@ -1,28 +1,38 @@
 @extends('layouts.main')
 
 @section('content')
-    <h1>
-        index
-    </h1>
+    <div class="container">
+        <h1>
+            Beers
+        </h1>
 
 
-    <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-        </tbody>
-      </table>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Rating</th>
+                <th scope="col">Image</th>
+              </tr>
+            </thead>
+            <tbody>
+                @foreach ($beers as $beer)
+                <tr>
+                    <td>{{$beer->id}}</td>
+                    <td>{{$beer->name}}</td>
+                    <td>{{$beer->price}}</td>
+                    <td>{{$beer->rating}}</td>
+                    <td><img class="img-thumbnail" src="{{$beer->image}}" alt="{{$beer->name}}"></td>
+                </tr>
+                @endforeach
+
+
+            </tbody>
+          </table>
+
+          {{$beers->links()}}
+    </div>
 
 @endsection
